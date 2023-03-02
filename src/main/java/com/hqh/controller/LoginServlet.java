@@ -22,20 +22,8 @@ import java.io.InputStream;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
         String username = req.getParameter("account");
         String password = req.getParameter("password");
-//        String resource = "/mybatis/mybatis-config.xml";
-//
-//        InputStream inputStream = Resources.getResourceAsStream(resource);
-//        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-//        sqlSessionFactory.getConfiguration().addMapper(UserMapper.class);
-//
-//        SqlSession session = sqlSessionFactory.openSession();
-//        UserMapper mapper = session.getMapper(UserMapper.class);
-//        UserBean user = mapper.login(username, password);
-//
-//        System.out.println(user);
 
         ApplicationContext context =new ClassPathXmlApplicationContext("spring/applicationContext.xml");
         UserService userService = (UserService) context.getBean("userService");
@@ -43,13 +31,9 @@ public class LoginServlet extends HttpServlet {
         JsonMessage jsonMessage = userService.login(username, password);
 
         String result = JSONObject.toJSONString(jsonMessage);
+        System.out.println(result);
         resp.setCharacterEncoding("utf-8");
         resp.setContentType("utf-8");
         resp.getWriter().println(result);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
     }
 }

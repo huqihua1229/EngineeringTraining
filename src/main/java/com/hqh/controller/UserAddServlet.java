@@ -16,8 +16,6 @@ import java.io.IOException;
 public class UserAddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
-
         String username = req.getParameter("account");
         String password = req.getParameter("password");
         UserBean userBean = new UserBean();

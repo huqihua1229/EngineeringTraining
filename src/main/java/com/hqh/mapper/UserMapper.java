@@ -1,10 +1,7 @@
 package com.hqh.mapper;
 
 import com.hqh.bean.UserBean;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 public interface UserMapper {
     @Select("select * from user where user_name=#{username} and password=#{password}")
@@ -12,6 +9,6 @@ public interface UserMapper {
             @Result(property = "password", column = "password")})
     UserBean login(@Param("username") String username, @Param("password") String password);
 
-    @Select("insert into user values (#{username}, #{password})")
+    @Insert("insert into user (user_name, password)values (#{username}, #{password})")
     Integer add(UserBean userBean);
 }

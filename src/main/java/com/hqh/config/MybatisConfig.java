@@ -13,13 +13,13 @@ import org.springframework.context.annotation.PropertySource;
 @MapperScan("com.hqh.mapper")
 @PropertySource("classpath:jdbc.properties")
 public class MybatisConfig {
-    @Value("$(jdbc.driverClassName")
+    @Value("${jdbc.driver}")
     private String driverClassName;
-    @Value("$(jdbc.url")
+    @Value("${jdbc.url}")
     private String url;
-    @Value("$(jdbc.username")
+    @Value("${jdbc.username}")
     private String username;
-    @Value("$(jdbc.password")
+    @Value("${jdbc.password}")
     private String password;
 
     @Bean

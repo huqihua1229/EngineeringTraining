@@ -72,9 +72,9 @@
 			password: password
 		}, function(data) {
 			console.log(data);
-			let data1 = JSON.parse(data);
-			console.log(data1);
-			if (data1.code == 1) {
+			let detail = JSON.parse(data);
+			console.log(detail);
+			if (detail.code == 1) {
 				alert("登录成功！！")
 			}
 		})
@@ -88,10 +88,10 @@
 			password: password
 		}, function(data) {
 			console.log(data);
-			let data1 = JSON.parse(data);
-			console.log(data1);
-			if (data1.code == 1) {
-				alert("登录成功！！")
+			let detail = JSON.parse(data);
+			console.log(detail);
+			if (detail.code == 1) {
+				alert("插入成功！！")
 			}
 		})
 	}
