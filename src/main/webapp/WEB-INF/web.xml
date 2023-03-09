@@ -138,6 +138,15 @@
     <servlet-name>userAddServlet</servlet-name>
     <url-pattern>/userAdd</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>userLiseServlet</servlet-name>
+    <servlet-class>com.hqh.controller.UserListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>userLiseServlet</servlet-name>
+    <url-pattern>/userListServlet</url-pattern>
+  </servlet-mapping>
 
   <mime-mapping>
     <extension>htm</extension>
@@ -147,4 +156,6 @@
     <extension>html</extension>
     <mime-type>text/html;charset=utf-8</mime-type>
   </mime-mapping>
+  
+  
 </web-app>
