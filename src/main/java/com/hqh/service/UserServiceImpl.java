@@ -2,10 +2,14 @@ package com.hqh.service;
 
 import com.hqh.bean.UserBean;
 import com.hqh.dto.JsonMessage;
+import com.hqh.dto.Page;
+import com.hqh.dto.Pager;
 import com.hqh.mapper.UserMapper;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -35,5 +39,29 @@ public class UserServiceImpl implements UserService {
             return jsonMessage;
         }
         return null;
+    }
+
+    @Override
+    public Page getList(Integer page, Integer recPerPage) {
+        Page resultPage = new Page();
+
+        resultPage.setResult("success");
+
+        if(page <= 0){
+            page = 1;
+        }
+        int offset = (page - 1) * recPerPage;
+        RowBounds rowBounds = new RowBounds(offset, recPerPage);
+        List<UserBean> userList = userMapper.getList(rowBounds);
+        resultPage.setData(userList);
+
+        Pager pager = new Pager();
+        pager.setPage(page);
+        pager.setRecPerPage(recPerPage);
+        pager.setRecTotal(userMapper.getCount());
+
+        resultPage.setPager(pager);
+
+        return resultPage;
     }
 }
