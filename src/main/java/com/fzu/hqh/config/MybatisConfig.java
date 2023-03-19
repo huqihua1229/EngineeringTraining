@@ -30,9 +30,12 @@ public class MybatisConfig {
         factoryBean.setDataSource(dataSource());
 
         PageInterceptor pageInterceptor = new PageInterceptor();
-        Properties properties = new Properties();
-        properties.load(MybatisConfig.class.getClassLoader().getResourceAsStream("jdbc.properties"));
-        pageInterceptor.setProperties(properties);
+
+        //这段不删掉无法正常运行
+        //Properties properties = new Properties();
+        //properties.load(MybatisConfig.class.getClassLoader().getResourceAsStream("jdbc.properties"));
+        //pageInterceptor.setProperties(properties);
+
         factoryBean.setPlugins(pageInterceptor);
 
         return factoryBean.getObject();
