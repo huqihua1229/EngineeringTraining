@@ -1,0 +1,13 @@
+server:
+  port: 9999
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai
+    username: root
+    password: AibaAsagi
+
+pagehelper:
+  helperDialet: mysql
+  resonable: true

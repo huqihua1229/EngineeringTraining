@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>登录</title>
+    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+    <link rel="stylesheet" href="./dist/css/zui.min.css">
+    <!-- ZUI Javascript 依赖 jQuery -->
+    <script src="./dist/lib/jquery/jquery.js"></script>
+    <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+    <script src="./dist/js/zui.min.js"></script>
+</head>
+<body>
+    <div class="input-control has-icon-left">
+        <input id="account" type="text" class="form-control" placeholder="用户名">
+        <label for="account" class="input-control-icon-left"><i class="icon icon-user "></i></label>
+    </div>
+    <div class="input-control has-icon-left has-icon-right">
+        <input id="inputEmailExample1" type="email" class="form-control" placeholder="Email">
+        <label for="inputEmailExample1" class="input-control-icon-left"><i class="icon icon-envelope "></i></label>
+        <label for="inputEmailExample1" class="input-control-icon-right"><i class="icon icon-check"></i></label>
+    </div>
+    <div class="input-control has-icon-right">
+        <input id="password" type="password" class="form-control" placeholder="密码">
+        <label for="password" class="input-control-icon-right"><i class="icon icon-key"></i></label>
+    </div>
+    <button class="btn btn-primary" type="button" onclick="login()">主要按钮</button>
+
+</body>
+</html>
+
+<script>
+    function login(){
+        let account = $('#account').val();
+        let password = $('#password').val();
+        $.get("login", {
+            account: account,
+            password: password
+        }, function (data) {
+            console.log(data);
+            let detail = JSON.parse(data);
+            console.log(detail);
+            if(detail.code == 1){
+                alert("登录成功");
+            }
+        })
+
+    }
+</script>
